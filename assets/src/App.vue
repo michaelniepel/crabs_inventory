@@ -3,6 +3,7 @@
     <h1>{{ msg }}</h1>
     <h2>The following was loaded over Graphql:</h2>
     <p>User: {{ user.name }}</p>
+    <p>Item: {{ item.name }}</p>
   </div>
 </template>
 
@@ -14,7 +15,8 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js & Phoenix & GraphQL App',
-      user: ""
+      user: "",
+      item: ""
     }
   },
   apollo: {
@@ -24,6 +26,13 @@ export default {
     user: gql`{
       user(id: "1"){
         name
+      }
+    }`,
+    item: gql`{
+      item(id: "5"){
+        name,
+        description,
+        qty
       }
     }`,
   }
